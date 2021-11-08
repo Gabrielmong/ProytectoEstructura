@@ -5,11 +5,11 @@ public class Conductor {
     private int cedula;
     private Boolean vacunado;
 
-    public Conductor(String nombre, int edad, int cedula, Boolean vacunado) {
-        this.nombre = nombre;
-        this.edad = edad;
-        this.cedula = cedula;
-        this.vacunado = vacunado;
+    public Conductor() {
+        this.nombre = "";
+        this.edad = 0;
+        this.cedula = 0;
+        this.vacunado = false;
     }
 
     public String getNombre() {
