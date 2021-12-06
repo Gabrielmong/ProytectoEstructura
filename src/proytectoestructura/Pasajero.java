@@ -1,5 +1,6 @@
 package proytectoestructura;
 public class Pasajero {
+    
     private String nombre;
     private int edad;
     private int cedula;

@@ -1,22 +1,13 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package proytectoestructura;
 
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author gabri
- */
-public class Cola {
+public class Estructuras {
 
     private NodoC inicio;
     private NodoC fin;
 
-    public Cola() {
+    public Estructuras() {
         this.inicio = null;
         this.fin = null;
     }
@@ -24,10 +15,33 @@ public class Cola {
     public boolean esVacía() {
         return inicio == null;
     }
+
     public void agregar() {
-        Dato d = new Dato();
+        Pasajero p = new Pasajero();
         NodoC nc = new NodoC();
-        nc.setElemento(d);
+        p.setCedula(Integer.parseInt(JOptionPane.showInputDialog(null, "Número de cédula: ")));
+        p.setEdad(Integer.parseInt(JOptionPane.showInputDialog(null, "Edad: ")));
+        p.setNombre(JOptionPane.showInputDialog(null, "Nombre del pasajero: "));
+        
+        int tempop = 1;
+        while (tempop != 0) {
+            int temp = Integer.parseInt(JOptionPane.showInputDialog(null, "Está Vacunado? \n1. Sí   2. No"));
+            switch (temp) {
+                case 1:
+                    p.setVacunado(Boolean.TRUE);
+                    tempop = 0;
+                    break;
+                case 2:
+                    p.setVacunado(Boolean.FALSE);
+                    tempop = 0;
+                    break;
+                default:
+                    JOptionPane.showMessageDialog(null, "Ingrese un número válido");
+                    break;
+            }
+        }
+
+        nc.setPasajero(p);
         if (esVacía()) {
             inicio = nc;
             fin = nc;
@@ -52,7 +66,7 @@ public class Cola {
             String s = "";
             NodoC aux = inicio;
             while (aux != null) {
-                s = s + " " + "--" + " " + "<--";
+                s = s + aux.getPasajero().getNombre() + aux.getPasajero().getEdad() + " " + "<--";
                 aux = aux.getSiguiente();
             }
             JOptionPane.showMessageDialog(null, "La cola contiene: \n" + s);
