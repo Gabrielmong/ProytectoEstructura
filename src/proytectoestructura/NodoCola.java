@@ -1,17 +1,17 @@
 package proytectoestructura;
-public class NodoC {
+public class NodoCola {
     private Pasajero Pasajero;
-    private NodoC siguiente;
+    private NodoCola siguiente;
 
-    public NodoC() {
+    public NodoCola() {
         this.siguiente = null;
     }
     
-    public NodoC getSiguiente() {
+    public NodoCola getSiguiente() {
         return siguiente;
     }
 
-    public void setSiguiente(NodoC siguiente) {
+    public void setSiguiente(NodoCola siguiente) {
         this.siguiente = siguiente;
     }
 

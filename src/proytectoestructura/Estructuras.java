@@ -4,8 +4,8 @@ import javax.swing.JOptionPane;
 
 public class Estructuras {
 
-    private NodoC inicio;
-    private NodoC fin;
+    private NodoCola inicio;
+    private NodoCola fin;
 
     public Estructuras() {
         this.inicio = null;
@@ -18,7 +18,7 @@ public class Estructuras {
 
     public void agregar() {
         Pasajero p = new Pasajero();
-        NodoC nc = new NodoC();
+        NodoCola nc = new NodoCola();
         p.setCedula(Integer.parseInt(JOptionPane.showInputDialog(null, "Número de cédula: ")));
         p.setEdad(Integer.parseInt(JOptionPane.showInputDialog(null, "Edad: ")));
         p.setNombre(JOptionPane.showInputDialog(null, "Nombre del pasajero: "));
@@ -64,7 +64,7 @@ public class Estructuras {
     public void mostrarCola() {
         if (!esVacía()) {
             String s = "";
-            NodoC aux = inicio;
+            NodoCola aux = inicio;
             while (aux != null) {
                 s = s + aux.getPasajero().getNombre() + aux.getPasajero().getEdad() + " " + "<--";
                 aux = aux.getSiguiente();
