@@ -39,6 +39,11 @@ public class Main {
                     e.agregarPila();
                     e.mostrarPila();
                     e.quitarPila();
+                case 7:
+                    formulario f = new formulario();
+                    f.setLocationRelativeTo(null);
+                    f.setVisible(true);
+                    f.setTitle("Formulario");
                 default:
                     break;
             }
