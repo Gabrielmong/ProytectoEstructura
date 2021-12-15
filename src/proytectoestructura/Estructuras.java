@@ -261,7 +261,7 @@ public class Estructuras {
             String s = "";
             NodoCola aux = inicioC;
             while (aux != null) {
-                s = s + aux.getPasajero().getNombre() + " " + aux.getPasajero().getEdad() + " " + ", Vacunado: " + aux.getPasajero().getVacunado() + "\n";
+                s = s + "Nombre: "+aux.getPasajero().getNombre() + ", " + aux.getPasajero().getEdad() + " " + " años, Vacunado: " + aux.getPasajero().getVacunado() + "\n";
                 aux = aux.getSiguiente();
             }
             out = s;

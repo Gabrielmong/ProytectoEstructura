@@ -130,7 +130,7 @@ public class BusAdd extends javax.swing.JFrame {
         this.setVisible(false);
         txt_color.setText("");
         txt_estilo.setText("");
-        txt_pass.setText("");
+        txt_pass.setText(" ");
         txt_placa.setText("");
         txt_trans.setText("");
         
