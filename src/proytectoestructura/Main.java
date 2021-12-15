@@ -10,7 +10,6 @@ public class Main {
         m.setVisible(true);
         m.setTitle("Menu Principal");
         
-        
     }
     
 }

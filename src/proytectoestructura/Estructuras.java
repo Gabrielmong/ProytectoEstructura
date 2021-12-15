@@ -103,20 +103,19 @@ public class Estructuras {
         Bus b = new Bus();
         b.setColor(color);
         b.setEstilo(estilo);
-        b.setPasajeros(0);
+        b.setPasajeros(pasajeros);
         b.setPlaca(placa);
         b.setTrans(trans);
         NodoLDS nLDS = new NodoLDS();
         nLDS.setElemento(b);
-        if (LDCEsVacía()) {
+        if (LDSEsVacía()) {
             inicioLDS = nLDS;
             finLDS = nLDS;
         } else {
             NodoLDS aux = inicioLDS;
-            nLDS.setSiguiente(aux.getSiguiente());
+            
             nLDS.setAnterior(aux);
             aux.setSiguiente(nLDS);
-            nLDS.getSiguiente().setAnterior(nLDS);
         }
     }
 
@@ -248,13 +247,13 @@ public class Estructuras {
         if (!LDSEsVacía()) {
             
             NodoLDS aux = inicioLDS;
-             s = s + aux.getElemento().getColor()+" "+aux.getElemento().getEstilo()+" "+aux.getElemento().getPlaca()+" "+aux.getElemento().getTrans()+" "+aux.getElemento().getPasajeros();
+             s = s + "Bus "+ aux.getElemento().getColor()+", Estilo: "+aux.getElemento().getEstilo()+", Placa: "+aux.getElemento().getPlaca()+", Transmisión "+aux.getElemento().getTrans()+", PasajerosL "+aux.getElemento().getPasajeros()+"\n\n";
              aux = aux.getSiguiente();
             while (aux != null) {
-                s = s + aux.getElemento().getColor()+" "+aux.getElemento().getEstilo()+" "+aux.getElemento().getPlaca()+" "+aux.getElemento().getTrans()+" "+aux.getElemento().getPasajeros();
+                s = s + "Bus "+ aux.getElemento().getColor()+", Estilo: "+aux.getElemento().getEstilo()+", Placa: "+aux.getElemento().getPlaca()+", Transmisión "+aux.getElemento().getTrans()+", PasajerosL "+aux.getElemento().getPasajeros()+"\n\n";
                 aux = aux.getSiguiente();
             }
-            JOptionPane.showMessageDialog(null, s);
+            
         } else {
             s = "No hay registros";
         }

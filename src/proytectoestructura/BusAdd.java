@@ -10,10 +10,13 @@ package proytectoestructura;
  * @author gabri
  */
 public class BusAdd extends javax.swing.JFrame {
-
     /**
      * Creates new form BusAdd
      */
+    private Estructuras e = new Estructuras();
+    
+    
+    
     public BusAdd() {
         initComponents();
     }
@@ -52,6 +55,11 @@ public class BusAdd extends javax.swing.JFrame {
         lbl_pass.setText("Pasajeros");
 
         btn_Siguiente.setText("Siguiente");
+        btn_Siguiente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_SiguienteActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -109,6 +117,18 @@ public class BusAdd extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btn_SiguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_SiguienteActionPerformed
+        
+        e.agregarLDS(txt_color.getText(), txt_estilo.getText(), Integer.parseInt(txt_pass.getText()), txt_placa.getText(), txt_trans.getText());
+        this.setVisible(false);
+        txt_color.setText("");
+        txt_estilo.setText("");
+        txt_pass.setText("");
+        txt_placa.setText("");
+        txt_trans.setText("");
+        
+    }//GEN-LAST:event_btn_SiguienteActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -157,4 +177,12 @@ public class BusAdd extends javax.swing.JFrame {
     private javax.swing.JTextField txt_placa;
     private javax.swing.JTextField txt_trans;
     // End of variables declaration//GEN-END:variables
+
+    public Estructuras getE() {
+        return e;
+    }
+
+    public void setE(Estructuras e) {
+        this.e = e;
+    }
 }
