@@ -60,29 +60,13 @@ public class Estructuras {
     /* 
             Métodos para agregar a las estructuras
      */
-    public void agregarCola() {   // Cola
+    public void agregarCola(String Nombre, int Cedula, int edad, boolean vacuna) {   // Cola
         Pasajero p = new Pasajero();
         NodoCola nc = new NodoCola();
-        p.setCedula(Integer.parseInt(JOptionPane.showInputDialog(null, "Número de cédula: ")));
-        p.setEdad(Integer.parseInt(JOptionPane.showInputDialog(null, "Edad: ")));
-        p.setNombre(JOptionPane.showInputDialog(null, "Nombre del pasajero: "));
-        int tempop = 1;
-        while (tempop != 0) {
-            int temp = Integer.parseInt(JOptionPane.showInputDialog(null, "Está Vacunado? \n1. Sí   2. No"));
-            switch (temp) {
-                case 1:
-                    p.setVacunado(Boolean.TRUE);
-                    tempop = 0;
-                    break;
-                case 2:
-                    p.setVacunado(Boolean.FALSE);
-                    tempop = 0;
-                    break;
-                default:
-                    JOptionPane.showMessageDialog(null, "Ingrese un número válido");
-                    break;
-            }
-        }
+        p.setCedula(Cedula);
+        p.setEdad(edad);
+        p.setNombre(Nombre);
+        p.setVacunado(vacuna);
         nc.setPasajero(p);
         if (ColaEsVacía()) {
             inicioC = nc;
@@ -94,9 +78,11 @@ public class Estructuras {
         }
     }
 
-    public void agregarLDC() {   //Lista Doble Circular
+    public void agregarLDC(Pasajero p, int fac , String ruta ) {   //Lista Doble Circular
         Dato d = new Dato();
-
+        d.setNumFac(fac);
+        d.setPasajero(p);
+        d.setRuta(ruta);
         NodoLDC nLDC = new NodoLDC();
         nLDC.setElemento(d);
         if (LDCEsVacía()) {
@@ -218,29 +204,39 @@ public class Estructuras {
     /*
             Métodos para mostrar las estructuras
      */
-    public void mostrarCola() {    //Cola
+    public String mostrarCola() {    //Cola
+        String out = "";
         if (!ColaEsVacía()) {
             String s = "";
             NodoCola aux = inicioC;
             while (aux != null) {
-                s = s + aux.getPasajero().getNombre() + aux.getPasajero().getEdad() + " " + "<--";
+                s = s + aux.getPasajero().getNombre() +" "+ aux.getPasajero().getEdad() + " " +", Vacunado: "+aux.getPasajero().getVacunado() + "\n";
                 aux = aux.getSiguiente();
             }
-            JOptionPane.showMessageDialog(null, "La cola contiene: \n" + s);
+            out = s;
         } else {
-            JOptionPane.showMessageDialog(null, "No existen elementos para mostrar.");
+            out = "No existen elementos para mostrar.";
         }
+        return out;
     }
 
-    public void mostrarLDC() {   //Lista Doble Circular
+    public String mostrarLDC() {   //Lista Doble Circular
+        String s = "";
         if (!LDCEsVacía()) {
-            String s = "";
             NodoLDC aux = inicioLDC;
-            while (aux != null) {
-                s = s + aux.getElemento();
+            s = s + aux.getElemento().getPasajero().getNombre()+" "+aux.getElemento().getPasajero().getCedula()+", Vacunado: "+aux.getElemento().getPasajero().getVacunado()+"\n"+
+                        "Factura: " +aux.getElemento().getNumFac()+ "\nRuta: "+aux.getElemento().getRuta() + "\n\n";
+            aux = aux.getSiguiente();
+            while (aux != inicioLDC) {
+                s = s + aux.getElemento().getPasajero().getNombre()+","+aux.getElemento().getPasajero().getCedula()+", Vacunado: "+aux.getElemento().getPasajero().getVacunado()+"\n"+
+                        "Factura: " +aux.getElemento().getNumFac()+ "\nRuta: "+aux.getElemento().getRuta();
+                aux = aux.getSiguiente();
             }
-            JOptionPane.showMessageDialog(null, s);
+            
+        } else {
+            s = "No hay registro";
         }
+        return s;
     }
 
     public void mostrarLDS() {   //Lista Doble Simple
