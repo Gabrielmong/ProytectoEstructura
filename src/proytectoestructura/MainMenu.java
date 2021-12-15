@@ -18,7 +18,8 @@ public class MainMenu extends javax.swing.JFrame {
     Estructuras e = f.getE();
     Estructuras e1 = b.getE();
     Parqueo p = new Parqueo();
-    
+    ConductorAdd c = new ConductorAdd();
+    EstacionAdd ea = new EstacionAdd();
 
     /**
      * Creates new form MainMenu
@@ -36,156 +37,203 @@ public class MainMenu extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        btn_Form = new javax.swing.JButton();
-        btn_tiquetes = new javax.swing.JButton();
-        btn_clientes = new javax.swing.JButton();
-        btn_Buses = new javax.swing.JButton();
-        btn_addbus = new javax.swing.JButton();
         jLabel12 = new javax.swing.JLabel();
-        btn_parqueo = new javax.swing.JButton();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
+        jMenuItem3 = new javax.swing.JMenuItem();
+        jMenuItem4 = new javax.swing.JMenuItem();
+        jMenu2 = new javax.swing.JMenu();
+        menuPar = new javax.swing.JMenuItem();
+        menuClien = new javax.swing.JMenuItem();
+        menuBus = new javax.swing.JMenuItem();
+        menuTiq = new javax.swing.JMenuItem();
+        menuChof = new javax.swing.JMenuItem();
+        menuEsta = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        btn_Form.setText("Nuevo Tiquete");
-        btn_Form.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_FormActionPerformed(evt);
-            }
-        });
-
-        btn_tiquetes.setText("Ver tiquetes");
-        btn_tiquetes.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_tiquetesActionPerformed(evt);
-            }
-        });
-
-        btn_clientes.setText("Ver Clientes");
-        btn_clientes.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_clientesActionPerformed(evt);
-            }
-        });
-
-        btn_Buses.setText("Ver Buses");
-        btn_Buses.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_BusesActionPerformed(evt);
-            }
-        });
-
-        btn_addbus.setText("Agregar Bus");
-        btn_addbus.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_addbusActionPerformed(evt);
-            }
-        });
-
         jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/Logo-bus.jpg"))); // NOI18N
 
-        btn_parqueo.setText("Parquear");
-        btn_parqueo.addActionListener(new java.awt.event.ActionListener() {
+        jMenu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/MicrosoftTeams-image.png"))); // NOI18N
+        jMenu1.setText("Agregar");
+
+        jMenuItem1.setText("Nuevo Tiquete");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_parqueoActionPerformed(evt);
+                jMenuItem1ActionPerformed(evt);
             }
         });
+        jMenu1.add(jMenuItem1);
+
+        jMenuItem2.setText("Agregar Chofer");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem2);
+
+        jMenuItem3.setText("Agregar Bus");
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem3ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem3);
+
+        jMenuItem4.setText("Agregar Estacion");
+        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem4ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem4);
+
+        jMenuBar1.add(jMenu1);
+
+        jMenu2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/icons8_check_file_32px_1.png"))); // NOI18N
+        jMenu2.setText("Mostrar");
+
+        menuPar.setText("Parqueo");
+        menuPar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuParActionPerformed(evt);
+            }
+        });
+        jMenu2.add(menuPar);
+
+        menuClien.setText("Ver Clientes");
+        menuClien.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuClienActionPerformed(evt);
+            }
+        });
+        jMenu2.add(menuClien);
+
+        menuBus.setText("Ver Buses");
+        menuBus.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuBusActionPerformed(evt);
+            }
+        });
+        jMenu2.add(menuBus);
+
+        menuTiq.setText("Ver Tiquetes");
+        menuTiq.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuTiqActionPerformed(evt);
+            }
+        });
+        jMenu2.add(menuTiq);
+
+        menuChof.setText("Ver Choferes");
+        menuChof.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuChofActionPerformed(evt);
+            }
+        });
+        jMenu2.add(menuChof);
+
+        menuEsta.setText("Ver Estaciones");
+        menuEsta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuEstaActionPerformed(evt);
+            }
+        });
+        jMenu2.add(menuEsta);
+
+        jMenuBar1.add(jMenu2);
+
+        setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(23, 23, 23)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btn_addbus, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btn_Form, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btn_parqueo, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(btn_clientes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btn_Buses, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(btn_tiquetes))
-                .addGap(24, 24, 24))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(146, Short.MAX_VALUE)
+                .addGap(195, 195, 195)
                 .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 315, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(139, 139, 139))
+                .addContainerGap(219, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(52, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(42, 42, 42)
                 .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(31, 31, 31)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(btn_Form, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btn_clientes, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(6, 6, 6)
-                                .addComponent(btn_Buses, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btn_tiquetes, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(btn_addbus, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btn_parqueo, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(85, 85, 85))
+                .addContainerGap(51, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btn_FormActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_FormActionPerformed
-
-        numFac++;
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+                numFac++;
         f.setTitle("Formulario");
         f.setLocationRelativeTo(null);
         f.setVisible(true);
         f.setLbl_Factura(Integer.toString(numFac));
-    }//GEN-LAST:event_btn_FormActionPerformed
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
 
-    private void btn_tiquetesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_tiquetesActionPerformed
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        c.setE(e1);
+        c.setTitle("Formulario_Conductor");
+        c.setLocationRelativeTo(null);
+        c.setVisible(true);
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
 
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+        b.setVisible(true);
+        b.setLocationRelativeTo(null);
+        b.setTitle("Agregar Bus");
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
+
+    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+        ea.setE(e);
+        ea.setTitle("Estaciones");
+        ea.setLocationRelativeTo(null);
+        ea.setVisible(true);    
+    }//GEN-LAST:event_jMenuItem4ActionPerformed
+
+    private void menuParActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuParActionPerformed
+        p.setLocationRelativeTo(null);
+        p.setE(e1);
+        p.setVisible(true);
+    }//GEN-LAST:event_menuParActionPerformed
+
+    private void menuClienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuClienActionPerformed
+        r1.setTxt_Reporte(e.mostrarCola());
+        r1.setVisible(true);
+        r1.setLocationRelativeTo(null);
+    }//GEN-LAST:event_menuClienActionPerformed
+
+    private void menuBusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuBusActionPerformed
+        r1.setTxt_Reporte(e1.mostrarLDS());
+        r1.setVisible(true);
+        r1.setLocationRelativeTo(null);
+    }//GEN-LAST:event_menuBusActionPerformed
+
+    private void menuTiqActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuTiqActionPerformed
         System.out.println(e.mostrarLDC());
         r1.setTxt_Reporte(e.mostrarLDC());
         r1.setVisible(true);
         r1.setLocationRelativeTo(null);
-    }//GEN-LAST:event_btn_tiquetesActionPerformed
+    }//GEN-LAST:event_menuTiqActionPerformed
 
-    private void btn_clientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_clientesActionPerformed
-
-        r1.setTxt_Reporte(e.mostrarCola());
+    private void menuChofActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuChofActionPerformed
+        System.out.println(e1.mostrarLS());
+        r1.setTxt_Reporte(e1.mostrarLS());
         r1.setVisible(true);
-        r1.setLocationRelativeTo(null);
+        r1.setLocationRelativeTo(null);  
+    }//GEN-LAST:event_menuChofActionPerformed
 
-
-    }//GEN-LAST:event_btn_clientesActionPerformed
-
-    private void btn_BusesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_BusesActionPerformed
-        r1.setTxt_Reporte(e1.mostrarLDS());
+    private void menuEstaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuEstaActionPerformed
+        ea.setE(e);
+        r1.setTxt_Reporte(e.mostrarLSC());
         r1.setVisible(true);
-        r1.setLocationRelativeTo(null);
-    }//GEN-LAST:event_btn_BusesActionPerformed
-
-    private void btn_addbusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_addbusActionPerformed
-        
-        b.setVisible(true);
-        b.setLocationRelativeTo(null);
-        b.setTitle("Agregar Bus");
-    }//GEN-LAST:event_btn_addbusActionPerformed
-
-    private void btn_parqueoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_parqueoActionPerformed
-        p.setLocationRelativeTo(null);
-        p.setE(e1);
-        p.setVisible(true);
-        
-    }//GEN-LAST:event_btn_parqueoActionPerformed
+        r1.setLocationRelativeTo(null);  
+    }//GEN-LAST:event_menuEstaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -223,12 +271,19 @@ public class MainMenu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btn_Buses;
-    private javax.swing.JButton btn_Form;
-    private javax.swing.JButton btn_addbus;
-    private javax.swing.JButton btn_clientes;
-    private javax.swing.JButton btn_parqueo;
-    private javax.swing.JButton btn_tiquetes;
     private javax.swing.JLabel jLabel12;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JMenuItem jMenuItem4;
+    private javax.swing.JMenuItem menuBus;
+    private javax.swing.JMenuItem menuChof;
+    private javax.swing.JMenuItem menuClien;
+    private javax.swing.JMenuItem menuEsta;
+    private javax.swing.JMenuItem menuPar;
+    private javax.swing.JMenuItem menuTiq;
     // End of variables declaration//GEN-END:variables
 }

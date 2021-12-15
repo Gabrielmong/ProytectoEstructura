@@ -2,20 +2,22 @@ package proytectoestructura;
 
 public class NodoLS {
 
-    private Dato datos;
+    private Conductor datos;
     private NodoLS siguiente;
 
     public NodoLS() {
         this.siguiente = null;
     }
 
-    public Dato getDatos() {
+    public Conductor getDatos() {
         return datos;
     }
 
-    public void setDatos(Dato datos) {
+    public void setDatos(Conductor datos) {
         this.datos = datos;
     }
+
+    
 
     public NodoLS getSiguiente() {
         return siguiente;

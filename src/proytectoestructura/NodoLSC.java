@@ -2,18 +2,18 @@ package proytectoestructura;
 
 public class NodoLSC {
 
-    private Dato datos;
+    private Estacion datos;
     private NodoLSC siguiente;
 
     public NodoLSC() {
         this.siguiente = null;
     }
 
-    public Dato getDatos() {
+    public Estacion getDatos() {
         return datos;
     }
 
-    public void setDatos(Dato datos) {
+    public void setDatos(Estacion datos) {
         this.datos = datos;
     }
 

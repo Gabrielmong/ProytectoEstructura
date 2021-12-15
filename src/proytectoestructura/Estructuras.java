@@ -76,6 +76,7 @@ public class Estructuras {
             finC = nc;
 
         }
+        System.out.println("Agregado a Cola");
     }
 
     public void agregarLDC(Pasajero p, int fac, String ruta) {   //Lista Doble Circular
@@ -106,6 +107,7 @@ public class Estructuras {
             aux.setSiguiente(nLDC);
             nLDC.getSiguiente().setAnterior(nLDC);
         }
+        System.out.println("Agregado a LDC");
     }
 
     public void agregarLDS(String color, String estilo, int pasajeros, String placa, String trans) {  // Lista Doble Simple   ***No estoy totalmente seguro me duele la cabeza xd
@@ -120,44 +122,71 @@ public class Estructuras {
         if (LDSEsVacía()) {
             inicioLDS = nLDS;
             finLDS = nLDS;
-        } else if (b.getPasajeros()>=finLDS.getElemento().getPasajeros()) {
+        } else if (b.getPasajeros() >= finLDS.getElemento().getPasajeros()) {
             finLDS.setSiguiente(nLDS);
             finLDS = finLDS.getSiguiente();
-            
+
         } else {
             NodoLDS aux = inicioLDS;
 
             nLDS.setAnterior(aux);
             aux.setSiguiente(nLDS);
         }
+        System.out.println("Agregado a LDS");
     }
 
-    public void agregarLS() {    //Lista Simple
-        Dato d = new Dato();
-
-        NodoLS nLS = new NodoLS();
+    public void agregarLS(String Nombre, int Cedula, int edad, boolean vacuna) {    //Lista Simple
+        Conductor c = new Conductor();
+        c.setNombre(Nombre);
+        c.setEdad(edad);
+        c.setCedula(Cedula);
+        c.setVacunado(vacuna);
+        NodoLS nuevo = new NodoLS();
+        nuevo.setDatos(c);
         if (LSEsVacía()) {
-            inicioLS = nLS;
+            inicioLS = nuevo;
+        } else if (c.getCedula() < inicioLS.getDatos().getCedula()) {
+            nuevo.setSiguiente(inicioLS);
+            inicioLS = nuevo;
+        } else if (inicioLS.getSiguiente() == null) {
+            inicioLS.setSiguiente(nuevo);
         } else {
             NodoLS aux = inicioLS;
-            nLS.setSiguiente(aux.getSiguiente());
-            aux.setSiguiente(nLS);
+            while ((aux.getSiguiente() != null) && (aux.getSiguiente().getDatos().getCedula() < c.getCedula())) {
+                aux = aux.getSiguiente();
+            }
+            nuevo.setSiguiente(aux.getSiguiente());
+            aux.setSiguiente(nuevo);
         }
+        System.out.println("Agregado a LS");
     }
 
-    public void agregarLSC() {   //Lista Simple Circular
-        Dato d = new Dato();
-
+    public void agregarLSC(String nomEstacion, int numEstacion, String Rutas, int CostoRuta, String horario) {   //Lista Simple Circular
+        Estacion e = new Estacion();
+        e.setNomEstacion(nomEstacion);
+        e.setNumEstacion(numEstacion);
+        e.setRutas(Rutas);
+        e.setCostoRuta(CostoRuta);
+        e.setHorario(horario);
         NodoLSC nLSC = new NodoLSC();
+        nLSC.setDatos(e);
         if (LSCEsVacía()) {
             inicioLSC = nLSC;
             finLSC = nLSC;
             finLSC.setSiguiente(inicioLSC);
+        } else if (e.getNumEstacion()>inicioLSC.getDatos().getNumEstacion()){
+            finLSC.setSiguiente(nLSC);
+            finLSC = nLSC;
+            finLSC.setSiguiente(inicioLSC);
         } else {
             NodoLSC aux = inicioLSC;
+            while (aux.getSiguiente().getDatos().getNumEstacion() < e.getNumEstacion()){
+                aux = aux.getSiguiente();
+            }
             nLSC.setSiguiente(aux.getSiguiente());
             aux.setSiguiente(nLSC);
         }
+        System.out.println("Agregado a LSC");
     }
 
     public void agregarPila(String color, String placa, String trans) {  //Pila
@@ -175,6 +204,7 @@ public class Estructuras {
             nP.setNext(Top);
             Top = nP;
         }
+        System.out.println("Agregado a Pila");
     }
 
     /*
@@ -265,10 +295,10 @@ public class Estructuras {
         if (!LDSEsVacía()) {
 
             NodoLDS aux = inicioLDS;
-            s = s + "Bus " + aux.getElemento().getColor() + ", Estilo: " + aux.getElemento().getEstilo() + ", Placa: " + aux.getElemento().getPlaca() + ", Transmisión " + aux.getElemento().getTrans() + ", PasajerosL " + aux.getElemento().getPasajeros() + "\n\n";
+            s = s + "Bus " + aux.getElemento().getColor() + ", Estilo: " + aux.getElemento().getEstilo() + ", Placa: " + aux.getElemento().getPlaca() + ", Transmisión " + aux.getElemento().getTrans() + ", Pasajeros " + aux.getElemento().getPasajeros() + "\n\n";
             aux = aux.getSiguiente();
             while (aux != null) {
-                s = s + "Bus " + aux.getElemento().getColor() + ", Estilo: " + aux.getElemento().getEstilo() + ", Placa: " + aux.getElemento().getPlaca() + ", Transmisión " + aux.getElemento().getTrans() + ", PasajerosL " + aux.getElemento().getPasajeros() + "\n\n";
+                s = s + "Bus " + aux.getElemento().getColor() + ", Estilo: " + aux.getElemento().getEstilo() + ", Placa: " + aux.getElemento().getPlaca() + ", Transmisión " + aux.getElemento().getTrans() + ", Pasajeros " + aux.getElemento().getPasajeros() + "\n\n";
                 aux = aux.getSiguiente();
             }
 
@@ -278,26 +308,37 @@ public class Estructuras {
         return s;
     }
 
-    public void mostrarLS() {   //Lista Simple
+    public String mostrarLS() {   //Lista Simple
+        String s = "";
+        NodoLS aux = inicioLS;
         if (!LSEsVacía()) {
-            String s = "";
-            NodoLS aux = inicioLS;
             while (aux != null) {
-                s = s + aux.getDatos();
+                s = s + "Chofer: " + aux.getDatos().getNombre() + ", Cedula: " + aux.getDatos().getCedula() + ", " + aux.getDatos().getEdad() + " años, Vacunado: " + aux.getDatos().getVacunado()
+                        + "\n\n";
+                aux = aux.getSiguiente();
             }
-            JOptionPane.showMessageDialog(null, s);
+            
+        } else {
+            s = "No hay registros";
         }
+        return s;
     }
 
-    public void mostrarLSC() {   //Lista Simple Circular
+    public String mostrarLSC() {   //Lista Simple Circular
+        String s = "";
         if (!LSCEsVacía()) {
-            String s = "";
             NodoLSC aux = inicioLSC;
-            while (aux != null) {
-                s = s + aux.getDatos();
+            s = s + "Estación: "+aux.getDatos().getNomEstacion() +", Horario: "+ aux.getDatos().getHorario()+", Rutas: "+aux.getDatos().getRutas()+", Costo: "+aux.getDatos().getCostoRuta()+", Número de estación: "+aux.getDatos().getNumEstacion()+ "\n\n";
+            aux = aux.getSiguiente();
+            while (aux != inicioLSC) {
+                s = s + "Estación: "+aux.getDatos().getNomEstacion() +", Horario: "+ aux.getDatos().getHorario()+", Rutas: "+aux.getDatos().getRutas()+", Costo: "+aux.getDatos().getCostoRuta()+", Número de estación: "+aux.getDatos().getNumEstacion()+ "\n\n";
+                aux = aux.getSiguiente();
             }
-            JOptionPane.showMessageDialog(null, s);
+            
+        } else {
+            s = "No hay registros";
         }
+        return s;
     }
 
     public String mostrarPila() {   //Pila
