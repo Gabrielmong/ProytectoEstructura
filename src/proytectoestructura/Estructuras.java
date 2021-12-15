@@ -78,7 +78,7 @@ public class Estructuras {
         }
     }
 
-    public void agregarLDC(Pasajero p, int fac , String ruta ) {   //Lista Doble Circular
+    public void agregarLDC(Pasajero p, int fac, String ruta) {   //Lista Doble Circular
         Dato d = new Dato();
         d.setNumFac(fac);
         d.setPasajero(p);
@@ -90,8 +90,17 @@ public class Estructuras {
             finLDC = nLDC;
             finLDC.setSiguiente(inicioLDC);
             inicioLDC.setAnterior(finLDC);
+        } else if (d.getNumFac() > finLDC.getElemento().getNumFac()) {
+            finLDC.setSiguiente(nLDC);
+            finLDC = finLDC.getSiguiente();
+            finLDC.setSiguiente(inicioLDC);
+            inicioLDC.setAnterior(finLDC);
+
         } else {
             NodoLDC aux = inicioLDC;
+            while (aux.getSiguiente().getElemento().getNumFac() < d.getNumFac()) {
+                aux = aux.getSiguiente();
+            }
             nLDC.setSiguiente(aux.getSiguiente());
             nLDC.setAnterior(aux);
             aux.setSiguiente(nLDC);
@@ -111,9 +120,13 @@ public class Estructuras {
         if (LDSEsVacía()) {
             inicioLDS = nLDS;
             finLDS = nLDS;
+        } else if (b.getPasajeros()>=finLDS.getElemento().getPasajeros()) {
+            finLDS.setSiguiente(nLDS);
+            finLDS = finLDS.getSiguiente();
+            
         } else {
             NodoLDS aux = inicioLDS;
-            
+
             nLDS.setAnterior(aux);
             aux.setSiguiente(nLDS);
         }
@@ -147,10 +160,15 @@ public class Estructuras {
         }
     }
 
-    public void agregarPila() {  //Pila
-        Dato d = new Dato();
-
+    public void agregarPila(String color, String placa, String trans) {  //Pila
+        Bus bus = new Bus();
+        bus.setColor(color);
+        bus.setPlaca(placa);
+        bus.setTrans(trans);
+        bus.setEstilo("");
+        bus.setPasajeros(0);
         NodoPila nP = new NodoPila();
+        nP.setDato(bus);
         if (PilaEsVacía()) {
             Top = nP;
         } else {
@@ -198,7 +216,7 @@ public class Estructuras {
     }
 
     public void quitarPila() {   //Pila
-        if (PilaEsVacía()) {
+        if (!PilaEsVacía()) {
             Top = Top.getNext();
         }
     }
@@ -213,12 +231,12 @@ public class Estructuras {
             String s = "";
             NodoCola aux = inicioC;
             while (aux != null) {
-                s = s + aux.getPasajero().getNombre() +" "+ aux.getPasajero().getEdad() + " " +", Vacunado: "+aux.getPasajero().getVacunado() + "\n";
+                s = s + aux.getPasajero().getNombre() + " " + aux.getPasajero().getEdad() + " " + ", Vacunado: " + aux.getPasajero().getVacunado() + "\n";
                 aux = aux.getSiguiente();
             }
             out = s;
         } else {
-            out = "No existen elementos para mostrar.";
+            out = "No hay registros.";
         }
         return out;
     }
@@ -227,17 +245,17 @@ public class Estructuras {
         String s = "";
         if (!LDCEsVacía()) {
             NodoLDC aux = inicioLDC;
-            s = s + aux.getElemento().getPasajero().getNombre()+" "+aux.getElemento().getPasajero().getCedula()+", Vacunado: "+aux.getElemento().getPasajero().getVacunado()+"\n"+
-                        "Factura: " +aux.getElemento().getNumFac()+ "\nRuta: "+aux.getElemento().getRuta() + "\n\n";
+            s = s + aux.getElemento().getPasajero().getNombre() + " " + aux.getElemento().getPasajero().getCedula() + ", Vacunado: " + aux.getElemento().getPasajero().getVacunado() + "\n"
+                    + "Factura: " + aux.getElemento().getNumFac() + "\nRuta: " + aux.getElemento().getRuta() + "\n\n";
             aux = aux.getSiguiente();
             while (aux != inicioLDC) {
-                s = s + aux.getElemento().getPasajero().getNombre()+","+aux.getElemento().getPasajero().getCedula()+", Vacunado: "+aux.getElemento().getPasajero().getVacunado()+"\n"+
-                        "Factura: " +aux.getElemento().getNumFac()+ "\nRuta: "+aux.getElemento().getRuta();
+                s = s + aux.getElemento().getPasajero().getNombre() + "," + aux.getElemento().getPasajero().getCedula() + ", Vacunado: " + aux.getElemento().getPasajero().getVacunado() + "\n"
+                        + "Factura: " + aux.getElemento().getNumFac() + "\nRuta: " + aux.getElemento().getRuta() + "\n\n";
                 aux = aux.getSiguiente();
             }
-            
+
         } else {
-            s = "No hay registro";
+            s = "No hay registros";
         }
         return s;
     }
@@ -245,15 +263,15 @@ public class Estructuras {
     public String mostrarLDS() {   //Lista Doble Simple
         String s = "";
         if (!LDSEsVacía()) {
-            
+
             NodoLDS aux = inicioLDS;
-             s = s + "Bus "+ aux.getElemento().getColor()+", Estilo: "+aux.getElemento().getEstilo()+", Placa: "+aux.getElemento().getPlaca()+", Transmisión "+aux.getElemento().getTrans()+", PasajerosL "+aux.getElemento().getPasajeros()+"\n\n";
-             aux = aux.getSiguiente();
+            s = s + "Bus " + aux.getElemento().getColor() + ", Estilo: " + aux.getElemento().getEstilo() + ", Placa: " + aux.getElemento().getPlaca() + ", Transmisión " + aux.getElemento().getTrans() + ", PasajerosL " + aux.getElemento().getPasajeros() + "\n\n";
+            aux = aux.getSiguiente();
             while (aux != null) {
-                s = s + "Bus "+ aux.getElemento().getColor()+", Estilo: "+aux.getElemento().getEstilo()+", Placa: "+aux.getElemento().getPlaca()+", Transmisión "+aux.getElemento().getTrans()+", PasajerosL "+aux.getElemento().getPasajeros()+"\n\n";
+                s = s + "Bus " + aux.getElemento().getColor() + ", Estilo: " + aux.getElemento().getEstilo() + ", Placa: " + aux.getElemento().getPlaca() + ", Transmisión " + aux.getElemento().getTrans() + ", PasajerosL " + aux.getElemento().getPasajeros() + "\n\n";
                 aux = aux.getSiguiente();
             }
-            
+
         } else {
             s = "No hay registros";
         }
@@ -282,14 +300,87 @@ public class Estructuras {
         }
     }
 
-    public void mostrarPila() {   //Pilä
+    public String mostrarPila() {   //Pila
+        String s = "";
         if (!PilaEsVacía()) {
-            String s = "";
             NodoPila aux = Top;
             while (aux != null) {
-                s = s + aux.getDato();
+                s = s + "-----------\n" + "Placa: " + aux.getDato().getPlaca() + "\nColor: " + aux.getDato().getColor() + "\nTransmision: " + aux.getDato().getTrans() + "\n\n";
+                aux = aux.getNext();
             }
-            JOptionPane.showMessageDialog(null, s);
         }
+        return s;
+    }
+
+    public String buscarplacaBus(String Placa) {
+        String s = "";
+        if (!LDSEsVacía()) {
+
+            NodoLDS aux = inicioLDS;
+            String temp = aux.getElemento().getPlaca();;
+            if (Placa.equals(temp)) {
+                s = aux.getElemento().getPlaca();
+            }
+            aux = aux.getSiguiente();
+            while (aux != null) {
+                temp = aux.getElemento().getPlaca();
+                if (Placa.equals(temp)) {
+                    s = aux.getElemento().getPlaca();
+                }
+                aux = aux.getSiguiente();
+            }
+
+        } else {
+            s = "No hay registros";
+        }
+        return s;
+    }
+
+    public String buscarcolorbus(String placa) {
+        String s = "";
+        if (!LDSEsVacía()) {
+
+            NodoLDS aux = inicioLDS;
+            String temp = aux.getElemento().getPlaca();;
+            if (placa.equals(temp)) {
+                s = aux.getElemento().getColor();
+            }
+            aux = aux.getSiguiente();
+            while (aux != null) {
+                temp = aux.getElemento().getPlaca();
+                if (placa.equals(temp)) {
+                    s = aux.getElemento().getColor();
+                }
+                aux = aux.getSiguiente();
+            }
+
+        } else {
+            s = "No hay registros";
+        }
+        return s;
+    }
+
+    public String buscartransbus(String placa) {
+        String s = "";
+        if (!LDSEsVacía()) {
+
+            NodoLDS aux = inicioLDS;
+            String temp = aux.getElemento().getPlaca();;
+            if (placa.equals(temp)) {
+                s = aux.getElemento().getTrans();
+            }
+            aux = aux.getSiguiente();
+            while (aux != null) {
+                temp = aux.getElemento().getPlaca();
+                if (placa.equals(temp)) {
+                    s = aux.getElemento().getTrans();
+                }
+                aux = aux.getSiguiente();
+            }
+
+        } else {
+            s = "No hay registros";
+        }
+        return s;
     }
 }

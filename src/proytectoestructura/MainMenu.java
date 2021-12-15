@@ -17,7 +17,7 @@ public class MainMenu extends javax.swing.JFrame {
     BusAdd b = new BusAdd();
     Estructuras e = f.getE();
     Estructuras e1 = b.getE();
-    
+    Parqueo p = new Parqueo();
     
 
     /**
@@ -37,11 +37,12 @@ public class MainMenu extends javax.swing.JFrame {
     private void initComponents() {
 
         btn_Form = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btn_tiquetes = new javax.swing.JButton();
+        btn_clientes = new javax.swing.JButton();
         btn_Buses = new javax.swing.JButton();
         btn_addbus = new javax.swing.JButton();
         jLabel12 = new javax.swing.JLabel();
+        btn_parqueo = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -52,17 +53,17 @@ public class MainMenu extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setText("Ver tiquetes");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btn_tiquetes.setText("Ver tiquetes");
+        btn_tiquetes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btn_tiquetesActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Ver Clientes");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btn_clientes.setText("Ver Clientes");
+        btn_clientes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btn_clientesActionPerformed(evt);
             }
         });
 
@@ -82,6 +83,13 @@ public class MainMenu extends javax.swing.JFrame {
 
         jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/Logo-bus.jpg"))); // NOI18N
 
+        btn_parqueo.setText("Parquear");
+        btn_parqueo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_parqueoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -91,12 +99,14 @@ public class MainMenu extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btn_addbus, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btn_Form, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btn_parqueo, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btn_clientes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btn_Buses, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(jButton1))
+                    .addComponent(btn_tiquetes))
                 .addGap(24, 24, 24))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(146, Short.MAX_VALUE)
@@ -108,18 +118,23 @@ public class MainMenu extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(52, Short.MAX_VALUE)
                 .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(31, 31, 31)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btn_Form, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addComponent(btn_Buses, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(31, 31, 31)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(btn_Form, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btn_clientes, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(btn_addbus, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(6, 6, 6)
+                                .addComponent(btn_Buses, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btn_tiquetes, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(btn_addbus, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btn_parqueo, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(85, 85, 85))
         );
 
@@ -135,22 +150,22 @@ public class MainMenu extends javax.swing.JFrame {
         f.setLbl_Factura(Integer.toString(numFac));
     }//GEN-LAST:event_btn_FormActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btn_tiquetesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_tiquetesActionPerformed
 
         System.out.println(e.mostrarLDC());
         r1.setTxt_Reporte(e.mostrarLDC());
         r1.setVisible(true);
         r1.setLocationRelativeTo(null);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btn_tiquetesActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void btn_clientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_clientesActionPerformed
 
         r1.setTxt_Reporte(e.mostrarCola());
         r1.setVisible(true);
         r1.setLocationRelativeTo(null);
 
 
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_btn_clientesActionPerformed
 
     private void btn_BusesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_BusesActionPerformed
         r1.setTxt_Reporte(e1.mostrarLDS());
@@ -164,6 +179,13 @@ public class MainMenu extends javax.swing.JFrame {
         b.setLocationRelativeTo(null);
         b.setTitle("Agregar Bus");
     }//GEN-LAST:event_btn_addbusActionPerformed
+
+    private void btn_parqueoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_parqueoActionPerformed
+        p.setLocationRelativeTo(null);
+        p.setE(e1);
+        p.setVisible(true);
+        
+    }//GEN-LAST:event_btn_parqueoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -204,8 +226,9 @@ public class MainMenu extends javax.swing.JFrame {
     private javax.swing.JButton btn_Buses;
     private javax.swing.JButton btn_Form;
     private javax.swing.JButton btn_addbus;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton btn_clientes;
+    private javax.swing.JButton btn_parqueo;
+    private javax.swing.JButton btn_tiquetes;
     private javax.swing.JLabel jLabel12;
     // End of variables declaration//GEN-END:variables
 }

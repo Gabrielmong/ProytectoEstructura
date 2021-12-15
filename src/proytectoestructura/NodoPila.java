@@ -2,14 +2,14 @@ package proytectoestructura;
 
 public class NodoPila {
 
-    private Dato dato;
+    private Bus dato;
     private NodoPila next;
 
-    public Dato getDato() {
+    public Bus getDato() {
         return dato;
     }
 
-    public void setDato(Dato dato) {
+    public void setDato(Bus dato) {
         this.dato = dato;
     }
 
