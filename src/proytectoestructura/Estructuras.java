@@ -99,11 +99,15 @@ public class Estructuras {
         }
     }
 
-    public void agregarLDS() {  // Lista Doble Simple   ***No estoy totalmente seguro me duele la cabeza xd
-        Dato d = new Dato();
-
+    public void agregarLDS(String color, String estilo, int pasajeros, String placa, String trans) {  // Lista Doble Simple   ***No estoy totalmente seguro me duele la cabeza xd
+        Bus b = new Bus();
+        b.setColor(color);
+        b.setEstilo(estilo);
+        b.setPasajeros(0);
+        b.setPlaca(placa);
+        b.setTrans(trans);
         NodoLDS nLDS = new NodoLDS();
-        nLDS.setElemento(d);
+        nLDS.setElemento(b);
         if (LDCEsVacía()) {
             inicioLDS = nLDS;
             finLDS = nLDS;
@@ -239,15 +243,22 @@ public class Estructuras {
         return s;
     }
 
-    public void mostrarLDS() {   //Lista Doble Simple
+    public String mostrarLDS() {   //Lista Doble Simple
+        String s = "";
         if (!LDSEsVacía()) {
-            String s = "";
+            
             NodoLDS aux = inicioLDS;
+             s = s + aux.getElemento().getColor()+" "+aux.getElemento().getEstilo()+" "+aux.getElemento().getPlaca()+" "+aux.getElemento().getTrans()+" "+aux.getElemento().getPasajeros();
+             aux = aux.getSiguiente();
             while (aux != null) {
-                s = s + aux.getElemento();
+                s = s + aux.getElemento().getColor()+" "+aux.getElemento().getEstilo()+" "+aux.getElemento().getPlaca()+" "+aux.getElemento().getTrans()+" "+aux.getElemento().getPasajeros();
+                aux = aux.getSiguiente();
             }
             JOptionPane.showMessageDialog(null, s);
+        } else {
+            s = "No hay registros";
         }
+        return s;
     }
 
     public void mostrarLS() {   //Lista Simple

@@ -12,16 +12,14 @@ package proytectoestructura;
 public class formulario extends javax.swing.JFrame {
 
     private Estructuras e = new Estructuras();
-    Bus b1 = new Bus();
-    Bus b2 = new Bus();
+    Bus b1 = new Bus("Automático", "Verde", "Ciudad", "1685", 45);
+    Bus b2 = new Bus("Manual", "Azul", "Campo", "689535", 45);
 
     /**
      * Creates new form formulario
      */
     public formulario() {
         initComponents();
-        b1.setPasajeros(45);
-        b1.setPasajeros(45);
 
     }
 

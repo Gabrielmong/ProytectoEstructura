@@ -14,6 +14,9 @@ public class MainMenu extends javax.swing.JFrame {
     int numFac = 0;
     formulario f = new formulario();
     ReporteTiquete r1 = new ReporteTiquete();
+    Estructuras e = f.getE();
+    
+    
 
     /**
      * Creates new form MainMenu
@@ -34,6 +37,8 @@ public class MainMenu extends javax.swing.JFrame {
         btn_Form = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        btn_Buses = new javax.swing.JButton();
+        btn_addbus = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -58,6 +63,20 @@ public class MainMenu extends javax.swing.JFrame {
             }
         });
 
+        btn_Buses.setText("Ver Buses");
+        btn_Buses.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_BusesActionPerformed(evt);
+            }
+        });
+
+        btn_addbus.setText("Agregar Bus");
+        btn_addbus.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_addbusActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -65,11 +84,18 @@ public class MainMenu extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(124, 124, 124)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btn_Form)
-                    .addComponent(jButton2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 315, Short.MAX_VALUE)
-                .addComponent(jButton1)
-                .addGap(202, 202, 202))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btn_addbus)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btn_Form)
+                            .addComponent(jButton2))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 315, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jButton1)
+                            .addComponent(btn_Buses))
+                        .addGap(202, 202, 202))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -79,8 +105,12 @@ public class MainMenu extends javax.swing.JFrame {
                     .addComponent(btn_Form)
                     .addComponent(jButton1))
                 .addGap(50, 50, 50)
-                .addComponent(jButton2)
-                .addContainerGap(325, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton2)
+                    .addComponent(btn_Buses))
+                .addGap(33, 33, 33)
+                .addComponent(btn_addbus)
+                .addContainerGap(270, Short.MAX_VALUE))
         );
 
         pack();
@@ -96,8 +126,7 @@ public class MainMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_FormActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        Estructuras e = f.getE();
-        
+
         System.out.println(e.mostrarLDC());
         r1.setTxt_Reporte(e.mostrarLDC());
         r1.setVisible(true);
@@ -105,14 +134,23 @@ public class MainMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        Estructuras e = f.getE();
-        
+
         r1.setTxt_Reporte(e.mostrarCola());
         r1.setVisible(true);
         r1.setLocationRelativeTo(null);
 
 
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void btn_BusesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_BusesActionPerformed
+        r1.setTxt_Reporte(e.mostrarLDS());
+        r1.setVisible(true);
+        r1.setLocationRelativeTo(null);
+    }//GEN-LAST:event_btn_BusesActionPerformed
+
+    private void btn_addbusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_addbusActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_addbusActionPerformed
 
     /**
      * @param args the command line arguments
@@ -150,7 +188,9 @@ public class MainMenu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btn_Buses;
     private javax.swing.JButton btn_Form;
+    private javax.swing.JButton btn_addbus;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     // End of variables declaration//GEN-END:variables

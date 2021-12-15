@@ -14,6 +14,14 @@ public class Bus {
         this.pasajeros = 0;
     }
 
+    public Bus(String trans, String color, String estilo, String placa, int pasajeros) {
+        this.trans = trans;
+        this.color = color;
+        this.estilo = estilo;
+        this.placa = placa;
+        this.pasajeros = pasajeros;
+    }
+
     public String getTrans() {
         return trans;
     }

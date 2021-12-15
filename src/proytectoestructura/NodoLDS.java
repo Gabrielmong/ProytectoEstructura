@@ -2,7 +2,7 @@ package proytectoestructura;
 
 public class NodoLDS {
 
-    private Dato elemento;
+    private Bus elemento;
     private NodoLDS siguiente;
     private NodoLDS anterior;
 
@@ -11,11 +11,11 @@ public class NodoLDS {
         this.anterior = null;
     }
 
-    public Dato getElemento() {
+    public Bus getElemento() {
         return elemento;
     }
 
-    public void setElemento(Dato elemento) {
+    public void setElemento(Bus elemento) {
         this.elemento = elemento;
     }
 
